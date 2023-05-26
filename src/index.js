@@ -1,10 +1,16 @@
-import { pageLayout, headerLayout, mainSectionLayout } from "./layout.js";
+import {
+  pageLayout,
+  headerLayout,
+  mainSectionLayout,
+  footerLayout,
+} from "./layout.js";
 import { mainContent } from "./data.js";
 
 function component() {
   pageLayout();
   headerLayout();
   mainSectionLayout();
+  footerLayout();
 
   mainContent().defaultLocation();
 

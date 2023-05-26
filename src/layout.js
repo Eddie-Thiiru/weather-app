@@ -1,4 +1,8 @@
 import "./styles.css";
+import Img1 from "./images/wind.svg";
+import Img2 from "./images/humidity.svg";
+import Img3 from "./images/pressure.svg";
+import Img4 from "./images/sun.svg";
 
 const pageLayout = () => {
   const content = document.querySelector(".content");
@@ -47,18 +51,14 @@ const mainSectionLayout = () => {
   const date = document.createElement("div");
   const tempWrapper = document.createElement("div");
   const temp = document.createElement("div");
-  const weatherIcon = document.createElement("img");
   const weather = document.createElement("div");
 
   title.classList.add("title");
   date.classList.add("date");
   tempWrapper.classList.add("temp-wrapper");
   temp.classList.add("temp");
-  weatherIcon.classList.add("weather-icon");
-  weatherIcon.alt = "weather icon";
   weather.classList.add("weather");
 
-  tempWrapper.appendChild(weatherIcon);
   tempWrapper.appendChild(temp);
   pageMain.appendChild(title);
   pageMain.appendChild(date);
@@ -66,4 +66,70 @@ const mainSectionLayout = () => {
   pageMain.appendChild(weather);
 };
 
-export { pageLayout, headerLayout, mainSectionLayout };
+const footerLayout = () => {
+  const pageFooter = document.querySelector(".footer");
+  const windContainer = document.createElement("div");
+  const windIcon = new Image();
+  const windWrapper = document.createElement("div");
+  const windTitle = document.createElement("p");
+  const windVal = document.createElement("p");
+  const humidityContainer = document.createElement("div");
+  const humidityIcon = new Image();
+  const humidityWrapper = document.createElement("div");
+  const humidityTitle = document.createElement("p");
+  const humidityVal = document.createElement("p");
+  const pressureContainer = document.createElement("div");
+  const pressureIcon = new Image();
+  const pressureWrapper = document.createElement("div");
+  const pressureTitle = document.createElement("p");
+  const pressureVal = document.createElement("p");
+  const uvContainer = document.createElement("div");
+  const uvIcon = new Image();
+  const uvWrapper = document.createElement("div");
+  const uvTitle = document.createElement("p");
+  const uvVal = document.createElement("p");
+
+  windWrapper.classList.add("wind-wrapper");
+  windTitle.textContent = "Wind";
+  windVal.classList.add("wind-value");
+  windIcon.alt = "Wind icon";
+  windIcon.src = Img1;
+  humidityWrapper.classList.add("humidity-wrapper");
+  humidityTitle.textContent = "Humidity";
+  humidityVal.classList.add("humidity-value");
+  humidityIcon.alt = "Humidity icon";
+  humidityIcon.src = Img2;
+  pressureWrapper.classList.add("pressure-wrapper");
+  pressureTitle.textContent = "Pressure";
+  pressureVal.classList.add("pressure-value");
+  pressureIcon.alt = "Pressure icon";
+  pressureIcon.src = Img3;
+  uvWrapper.classList.add("uv-wrapper");
+  uvTitle.textContent = "UV Index";
+  uvVal.classList.add("uv-value");
+  uvIcon.alt = "Uv icon";
+  uvIcon.src = Img4;
+
+  windWrapper.appendChild(windTitle);
+  windWrapper.appendChild(windVal);
+  windContainer.appendChild(windIcon);
+  windContainer.appendChild(windWrapper);
+  humidityWrapper.appendChild(humidityTitle);
+  humidityWrapper.appendChild(humidityVal);
+  humidityContainer.appendChild(humidityIcon);
+  humidityContainer.appendChild(humidityWrapper);
+  pressureWrapper.appendChild(pressureTitle);
+  pressureWrapper.appendChild(pressureVal);
+  pressureContainer.appendChild(pressureIcon);
+  pressureContainer.appendChild(pressureWrapper);
+  uvWrapper.appendChild(uvTitle);
+  uvWrapper.appendChild(uvVal);
+  uvContainer.appendChild(uvIcon);
+  uvContainer.appendChild(uvWrapper);
+  pageFooter.appendChild(windContainer);
+  pageFooter.appendChild(humidityContainer);
+  pageFooter.appendChild(pressureContainer);
+  pageFooter.appendChild(uvContainer);
+};
+
+export { pageLayout, headerLayout, mainSectionLayout, footerLayout };

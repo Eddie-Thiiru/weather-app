@@ -13,3 +13,8 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.footer img {
+  height: 30px;
+  width: 30px;
+}
