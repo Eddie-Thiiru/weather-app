@@ -17,20 +17,28 @@ const pageLayout = () => {
 
 const headerLayout = () => {
   const pageHeader = document.querySelector(".header");
-  const searchWrapper = document.createElement("div");
+  const searchForm = document.createElement("form");
   const searchLabel = document.createElement("label");
   const searchInput = document.createElement("input");
+  const searchBtn = document.createElement("button");
+  const error = document.createElement("span");
 
-  searchWrapper.classList.add("search-wrapper");
+  searchForm.classList.add("search-form");
   searchLabel.htmlFor = "search-box";
   searchInput.type = "text";
   searchInput.name = "search-box";
   searchInput.id = "search-box";
   searchInput.placeholder = "Search for location";
+  searchBtn.type = "button";
+  searchBtn.classList.add("search-btn");
+  searchBtn.textContent = "search";
+  error.classList.add("search-error");
 
-  searchWrapper.appendChild(searchLabel);
-  searchWrapper.appendChild(searchInput);
-  pageHeader.appendChild(searchWrapper);
+  searchLabel.appendChild(searchInput);
+  searchLabel.appendChild(error);
+  searchForm.appendChild(searchLabel);
+  searchForm.appendChild(searchBtn);
+  pageHeader.appendChild(searchForm);
 };
 
 const mainSectionLayout = () => {

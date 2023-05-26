@@ -1,11 +1,19 @@
 import { pageLayout, headerLayout, mainSectionLayout } from "./layout.js";
-import { headerContent, mainContent } from "./data.js";
+import { mainContent } from "./data.js";
 
 function component() {
   pageLayout();
   headerLayout();
   mainSectionLayout();
-  headerContent();
-  mainContent();
+
+  mainContent().defaultLocation();
+
+  const searchBtn = document.querySelector(".search-btn");
+
+  searchBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    mainContent().searchLocation();
+  });
 }
 component();
