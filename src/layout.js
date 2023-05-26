@@ -3,6 +3,7 @@ import Img1 from "./images/wind.svg";
 import Img2 from "./images/humidity.svg";
 import Img3 from "./images/pressure.svg";
 import Img4 from "./images/sun.svg";
+import Img5 from "./images/search.svg";
 
 const pageLayout = () => {
   const content = document.querySelector(".content");
@@ -25,6 +26,7 @@ const headerLayout = () => {
   const searchLabel = document.createElement("label");
   const searchInput = document.createElement("input");
   const searchBtn = document.createElement("button");
+  const searchImg = new Image();
   const error = document.createElement("span");
 
   searchForm.classList.add("search-form");
@@ -35,9 +37,11 @@ const headerLayout = () => {
   searchInput.placeholder = "Search for location";
   searchBtn.type = "button";
   searchBtn.classList.add("search-btn");
-  searchBtn.textContent = "search";
+  searchImg.src = Img5;
+  searchImg.alt = "Search icon";
   error.classList.add("search-error");
 
+  searchBtn.appendChild(searchImg);
   searchLabel.appendChild(searchInput);
   searchLabel.appendChild(error);
   searchForm.appendChild(searchLabel);
