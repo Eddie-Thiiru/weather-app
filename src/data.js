@@ -3,6 +3,7 @@ async function defaultWeatherData() {
     "https://api.weatherapi.com/v1/current.json?key=67e874d11b194cf4a5760102232405&q=nairobi",
     { mode: "cors" }
   );
+
   const data = await response.json();
 
   return data;
@@ -27,7 +28,7 @@ function handleErrors(err) {
 
     setTimeout(() => {
       searchError.textContent = "";
-    }, 3000);
+    }, 2000);
   } else {
     console.log(err);
     throw new Error("Error");

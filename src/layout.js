@@ -45,17 +45,17 @@ const headerLayout = () => {
   searchLabel.appendChild(searchInput);
   searchLabel.appendChild(error);
   searchForm.appendChild(searchLabel);
-  searchForm.appendChild(searchBtn);
   pageHeader.appendChild(searchForm);
+  pageHeader.appendChild(searchBtn);
 };
 
 const mainSectionLayout = () => {
   const pageMain = document.querySelector(".main-section");
-  const title = document.createElement("div");
-  const date = document.createElement("div");
+  const title = document.createElement("p");
+  const date = document.createElement("p");
   const tempWrapper = document.createElement("div");
-  const temp = document.createElement("div");
-  const weather = document.createElement("div");
+  const temp = document.createElement("p");
+  const weather = document.createElement("p");
 
   title.classList.add("title");
   date.classList.add("date");
