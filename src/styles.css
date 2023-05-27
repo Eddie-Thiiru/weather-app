@@ -7,11 +7,15 @@
 body {
   height: 100vh;
   font-size: 1rem;
+  color: white;
 }
 
 .content {
   height: 100%;
   width: 100%;
+  background-image: url(./images/bg.jpg);
+  background-size: cover;
+  background-position: center;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   grid-template-rows: 1fr 2fr 1fr;
@@ -76,12 +80,27 @@ label {
   align-items: center;
 }
 
+.main-section .title {
+  font-size: 2rem;
+}
+
+.temp-wrapper {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.weather {
+  align-self: self-start;
+}
+
 .main-section p {
   padding: 10px;
+  font-size: 1.5rem;
 }
 
 footer p {
   padding: 5px;
+  font-size: 1.25rem;
 }
 
 .header img {
@@ -95,6 +114,6 @@ footer p {
 }
 
 .temp-wrapper img {
-  height: 84px;
-  width: 84px;
+  height: 94px;
+  width: 94px;
 }

@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 async function defaultWeatherData() {
   const response = await fetch(
     "https://api.weatherapi.com/v1/current.json?key=67e874d11b194cf4a5760102232405&q=nairobi",
@@ -52,8 +54,13 @@ const mainContent = () => {
   const defaultLocation = () => {
     defaultWeatherData()
       .then((data) => {
+        const newDate = format(
+          new Date(data.location.localtime),
+          "EEEE, do MMMM yyyy h:MM aaa"
+        );
+
         title.textContent = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
-        date.textContent = data.location.localtime;
+        date.textContent = newDate;
         weatherIcon.src = `https:${data.current.condition.icon}`;
         temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
         weather.textContent = data.current.condition.text;
@@ -62,7 +69,7 @@ const mainContent = () => {
         pressure.textContent = `${data.current.pressure_mb} mb`;
         uv.textContent = `${data.current.uv} of 10`;
 
-        tempWrapper.insertBefore(weatherIcon, temp);
+        tempWrapper.appendChild(weatherIcon);
       })
       .catch((err) => {
         handleErrors(err);
@@ -77,8 +84,13 @@ const mainContent = () => {
         if (data.error && data.error.code >= 400) {
           handleErrors(data.error.code);
         } else {
+          const newDate = format(
+            new Date(data.location.localtime),
+            "EEEE, do MMMM yyyy h:MM aaa"
+          );
+
           title.textContent = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
-          date.textContent = data.location.localtime;
+          date.textContent = newDate;
           weatherIcon.src = `https:${data.current.condition.icon}`;
           temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
           weather.textContent = data.current.condition.text;
