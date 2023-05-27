@@ -11,7 +11,6 @@ function component() {
   headerLayout();
   mainSectionLayout();
   footerLayout();
-
   mainContent().defaultLocation();
 
   const searchBtn = document.querySelector(".search-btn");
