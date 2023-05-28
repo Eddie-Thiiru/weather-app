@@ -39,7 +39,7 @@ body {
   height: 90%;
   grid-column: 2 / 3;
   display: grid;
-  grid-template-rows: 1fr 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr 1fr;
 }
 
 .footer {
@@ -99,6 +99,7 @@ label {
 
 .main-section .title {
   font-size: 3rem;
+  text-align: center;
 }
 
 .temp-wrapper {

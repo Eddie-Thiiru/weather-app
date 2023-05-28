@@ -32,7 +32,6 @@ function handleErrors(err) {
       searchError.textContent = "";
     }, 2000);
   } else {
-    console.log(err);
     throw new Error("Error");
   }
 }
@@ -59,7 +58,7 @@ const mainContent = () => {
           "EEEE, do MMMM yyyy h:MM aaa"
         );
 
-        title.textContent = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
+        title.textContent = `${data.location.name}, ${data.location.country}`;
         date.textContent = newDate;
         weatherIcon.src = `https:${data.current.condition.icon}`;
         temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
@@ -89,7 +88,7 @@ const mainContent = () => {
             "EEEE, do MMMM yyyy h:MM aaa"
           );
 
-          title.textContent = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
+          title.textContent = `${data.location.name}, ${data.location.country}`;
           date.textContent = newDate;
           weatherIcon.src = `https:${data.current.condition.icon}`;
           temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
