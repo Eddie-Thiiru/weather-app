@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-async function defaultWeatherData() {
+const defaultWeatherData = async () => {
   const response = await fetch(
     "https://api.weatherapi.com/v1/current.json?key=67e874d11b194cf4a5760102232405&q=nairobi",
     { mode: "cors" }
@@ -9,9 +9,9 @@ async function defaultWeatherData() {
   const data = await response.json();
 
   return data;
-}
+};
 
-async function getSearchData(val) {
+const getSearchData = async (val) => {
   const response = await fetch(
     `https://api.weatherapi.com/v1/current.json?key=67e874d11b194cf4a5760102232405&q=${val}`,
     { mode: "cors" }
@@ -20,13 +20,13 @@ async function getSearchData(val) {
   const data = await response.json();
 
   return data;
-}
+};
 
-function handleErrors(err) {
+const handleErrors = async (err) => {
   if (err > 1000) {
     const searchError = document.querySelector(".search-error");
 
-    searchError.textContent = "No results found";
+    searchError.textContent = "* No results found";
 
     setTimeout(() => {
       searchError.textContent = "";
@@ -34,11 +34,12 @@ function handleErrors(err) {
   } else {
     throw new Error("Error");
   }
-}
+};
 
 const mainContent = () => {
   const title = document.querySelector(".title");
   const date = document.querySelector(".date");
+  const time = document.querySelector(".time");
   const tempWrapper = document.querySelector(".temp-wrapper");
   const temp = document.querySelector(".temp");
   const weather = document.querySelector(".weather");
@@ -55,11 +56,13 @@ const mainContent = () => {
       .then((data) => {
         const newDate = format(
           new Date(data.location.localtime),
-          "EEEE, do MMMM yyyy h:MM aaa"
+          "EEE, do MMMM yyyy "
         );
+        const newTime = format(new Date(data.location.localtime), "h:MM aaa");
 
         title.textContent = `${data.location.name}, ${data.location.country}`;
         date.textContent = newDate;
+        time.textContent = newTime;
         weatherIcon.src = `https:${data.current.condition.icon}`;
         temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
         weather.textContent = data.current.condition.text;
@@ -76,6 +79,7 @@ const mainContent = () => {
   };
 
   const searchLocation = () => {
+    const form = document.querySelector(".search-form");
     const inputValue = document.getElementById("search-box").value;
 
     if (inputValue !== "") {
@@ -83,13 +87,18 @@ const mainContent = () => {
         if (data.error && data.error.code >= 400) {
           handleErrors(data.error.code);
         } else {
+          // reset form after successful fetch
+          form.reset();
+
           const newDate = format(
             new Date(data.location.localtime),
-            "EEEE, do MMMM yyyy h:MM aaa"
+            "EEE, do MMMM yyyy "
           );
+          const newTime = format(new Date(data.location.localtime), "h:MM aaa");
 
           title.textContent = `${data.location.name}, ${data.location.country}`;
           date.textContent = newDate;
+          time.textContent = newTime;
           weatherIcon.src = `https:${data.current.condition.icon}`;
           temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
           weather.textContent = data.current.condition.text;

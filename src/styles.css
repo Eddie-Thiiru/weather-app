@@ -7,10 +7,12 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   font-size: 1rem;
   font-family: "Inter", sans-serif;
   color: #f8f9fa;
+  display: grid;
+  text-align: center;
 }
 
 .content {
@@ -19,10 +21,8 @@ body {
   background-image: url(./images/bg.jpg);
   background-size: cover;
   background-position: center;
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -30,23 +30,67 @@ body {
   padding: 10px;
 }
 
-.header {
-  position: relative;
-  grid-column: 2 / 3;
+.content .header {
+  padding: 50px;
 }
 
 .main-section {
-  height: 90%;
-  grid-column: 2 / 3;
+  height: 100%;
   display: grid;
-  grid-template-rows: 2fr 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr max-content 1fr;
 }
 
 .footer {
   width: 100%;
-  grid-column: 2 / 3;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-error {
+  height: 20px;
+  padding: 5px;
+  color: #f47174;
+}
+
+.search-btn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  border: none;
+  background-color: transparent;
+  display: grid;
+  align-items: center;
+  cursor: pointer;
+}
+
+.main-section p,
+.main-section > div,
+.footer > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dateTimeContainer {
+  flex-direction: column;
+}
+
+.main-section .title {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.temp-wrapper {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.weather {
+  align-self: self-start;
 }
 
 label {
@@ -68,49 +112,6 @@ label {
   padding: 0px 45px 0px 20px;
 }
 
-#search-box::placeholder {
-  font-size: 0.875rem;
-  color: #f8f9fa;
-}
-
-.search-error {
-  height: 20px;
-  padding: 2px;
-  color: #f47174;
-}
-
-.search-btn {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  border: none;
-  background-color: transparent;
-  display: grid;
-  align-items: center;
-}
-
-.main-section p,
-.main-section > div,
-.footer > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-section .title {
-  font-size: 3rem;
-  text-align: center;
-}
-
-.temp-wrapper {
-  flex-direction: column;
-  gap: 10px;
-}
-
-.weather {
-  align-self: self-start;
-}
-
 .main-section p {
   padding: 10px;
   font-size: 1.5rem;
@@ -119,6 +120,11 @@ label {
 footer p {
   padding: 5px;
   font-size: 1.5rem;
+}
+
+#search-box::placeholder {
+  font-size: 0.875rem;
+  color: #f8f9fa;
 }
 
 .header img {
@@ -140,4 +146,20 @@ footer p {
   outline: none;
   color: #000000;
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 600px) {
+  .main-section p {
+    font-size: 1.25rem;
+  }
+
+  .footer div {
+    flex: 1;
+    flex-direction: column;
+    padding: 0px;
+  }
+
+  .footer p {
+    font-size: 0.875rem;
+  }
 }
