@@ -31,13 +31,13 @@ body {
 }
 
 .content .header {
-  padding: 50px;
+  padding: 20px;
 }
 
 .main-section {
   height: 100%;
   display: grid;
-  grid-template-rows: 2fr 1fr max-content 1fr;
+  grid-template-rows: 1fr 1fr max-content max-content;
 }
 
 .footer {
@@ -80,7 +80,7 @@ body {
 }
 
 .main-section .title {
-  font-size: 3rem;
+  font-size: clamp(3rem, 4vw, 6rem);
   text-align: center;
 }
 
